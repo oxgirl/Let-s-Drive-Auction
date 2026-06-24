@@ -1,295 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Let's Drive Auction</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: #f5f5f5;
-      color: #111;
-    }
-
-    header {
-      background: white;
-      height: 80px;
-      padding: 0 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
-      color: #111;
-    }
-
-    .logo span {
-      color: #e11d48;
-    }
-
-    nav {
-      display: flex;
-      gap: 25px;
-      align-items: center;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #111;
-      font-weight: bold;
-    }
-
-    .btn {
-      background: #e11d48;
-      color: white;
-      padding: 12px 22px;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .hero {
-      background: linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
-      url("https://images.unsplash.com/photo-1503736334956-4c8f8e92946d") center/cover;
-      height: 520px;
-      color: white;
-      display: flex;
-      align-items: center;
-      padding: 0 8%;
-    }
-
-    .hero-content {
-      max-width: 700px;
-    }
-
-    .hero h1 {
-      font-size: 58px;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 21px;
-      line-height: 1.6;
-      margin-bottom: 30px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 15px;
-    }
-
-    .btn-outline {
-      background: white;
-      color: #111;
-    }
-
-    .search-box {
-      background: white;
-      width: 84%;
-      margin: -45px auto 60px;
-      padding: 25px;
-      border-radius: 14px;
-      display: flex;
-      gap: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.18);
-      position: relative;
-    }
-
-    .search-box input,
-    .search-box select {
-      flex: 1;
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 15px;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 36px;
-      margin-bottom: 35px;
-    }
-
-    .section-title span {
-      color: #e11d48;
-    }
-
-    .categories {
-      padding: 20px 8% 60px;
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .category {
-      background: white;
-      padding: 18px 28px;
-      border-radius: 50px;
-      font-weight: bold;
-      box-shadow: 0 4px 15px rgba(0,0,0,.08);
-    }
-
-    .auction-section {
-      padding: 20px 8% 70px;
-    }
-
-    .cars {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-
-    .car-card {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 6px 25px rgba(0,0,0,.1);
-    }
-
-    .car-card img {
-      width: 100%;
-      height: 230px;
-      object-fit: cover;
-    }
-
-    .car-info {
-      padding: 22px;
-    }
-
-    .car-info h3 {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    .details {
-      color: #555;
-      margin-bottom: 18px;
-    }
-
-    .bid-row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-
-    .bid-price {
-      color: #e11d48;
-      font-size: 26px;
-      font-weight: bold;
-    }
-
-    .timer {
-      background: #111;
-      color: white;
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-
-    .watching {
-      color: #e11d48;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-    .car-card .btn {
-      width: 100%;
-      margin-top: 10px;
-    }
-
-    .how {
-      background: #111;
-      color: white;
-      padding: 70px 8%;
-      text-align: center;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 25px;
-      margin-top: 35px;
-    }
-
-    .step {
-      background: #1f1f1f;
-      padding: 30px;
-      border-radius: 14px;
-    }
-
-    .step h3 {
-      color: #e11d48;
-      margin-bottom: 12px;
-    }
-
-    .why {
-      padding: 70px 8%;
-      text-align: center;
-    }
-
-    .why-boxes {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-      margin-top: 35px;
-    }
-
-    .why-box {
-      background: white;
-      padding: 30px;
-      border-radius: 14px;
-      box-shadow: 0 5px 20px rgba(0,0,0,.08);
-      font-weight: bold;
-    }
-
-    footer {
-      background: #111;
-      color: white;
-      padding: 45px 8%;
-      text-align: center;
-    }
-
-    footer h2 {
-      color: #e11d48;
-      margin-bottom: 10px;
-    }
-
-    @media (max-width: 900px) {
-      nav a {
-        display: none;
-      }
-
-      .hero h1 {
-        font-size: 40px;
-      }
-
-      .search-box {
-        flex-direction: column;
-      }
-
-      .cars,
-      .steps,
-      .why-boxes {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -298,162 +13,122 @@
   <div class="logo">Let's Drive <span>Auction</span></div>
 
   <nav>
-    <a href="#">Home</a>
-    <a href="#">Auctions</a>
-    <a href="#">Sell Your Car</a>
-    <a href="#">How It Works</a>
-    <a href="#">Contact</a>
-    <button class="btn">Sign Up</button>
+    <a href="index.html">Home</a>
+    <a href="inventory.html">Auctions</a>
+    <a href="sell.html">Sell Your Car</a>
+    <a href="how.html">How It Works</a>
+    <a href="contact.html">Contact</a>
   </nav>
+
+  <div class="auth-buttons">
+    <a href="login.html" class="login-btn">Login</a>
+    <a href="signup.html" class="signup-btn">Sign Up</a>
+  </div>
 </header>
 
 <section class="hero">
-  <div class="hero-content">
-    <h1>Buy Smarter. Drive Better.</h1>
-    <p>
-      Bid on quality auction vehicles with transparent pricing, real photos,
-      vehicle details, and easy online bidding.
-    </p>
+  <div class="hero-text">
+    <h1>Bid. Win. Drive.</h1>
+    <p>Find auction vehicles at competitive prices with a simple online bidding experience.</p>
 
-    <div class="hero-buttons">
-      <button class="btn">Browse Auctions</button>
-      <button class="btn btn-outline">Sell Your Car</button>
+    <div class="hero-search">
+      <input type="text" placeholder="Search make, model, or keyword">
+      <button>Search</button>
     </div>
   </div>
 </section>
-
-<section class="search-box">
-  <input type="text" placeholder="Search make, model, or keyword">
-  <select>
-    <option>All Vehicles</option>
-    <option>Sedan</option>
-    <option>SUV</option>
-    <option>Truck</option>
-    <option>Luxury</option>
-  </select>
-  <select>
-    <option>Ending Soon</option>
-    <option>Ending Today</option>
-    <option>New Arrivals</option>
-    <option>No Reserve</option>
-  </select>
-  <button class="btn">Search</button>
-</section>
-
-<h2 class="section-title">Shop by <span>Category</span></h2>
 
 <section class="categories">
-  <div class="category">Ending Today</div>
-  <div class="category">No Reserve</div>
-  <div class="category">Clean Title</div>
-  <div class="category">Salvage</div>
-  <div class="category">Luxury</div>
-  <div class="category">SUV</div>
-  <div class="category">Truck</div>
-  <div class="category">Under $10k</div>
+  <button>Ending Today</button>
+  <button>No Reserve</button>
+  <button>Clean Title</button>
+  <button>Salvage</button>
+  <button>Luxury</button>
+  <button>SUV</button>
+  <button>Truck</button>
+  <button>Under $10k</button>
 </section>
 
-<section class="auction-section">
-  <h2 class="section-title">Featured <span>Auctions</span></h2>
+<section class="featured">
+  <h2>Featured Auctions</h2>
 
-  <div class="cars">
+  <div class="vehicle-grid">
 
-    <div class="car-card">
-      <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2">
-      <div class="car-info">
+    <div class="vehicle-card">
+      <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2" alt="Chevrolet Sonic">
+      <div class="vehicle-info">
         <h3>2020 Chevrolet Sonic</h3>
-        <p class="details">92,000 miles • Clean Title • California</p>
-        <p class="watching">🔥 18 people watching</p>
-
-        <div class="bid-row">
-          <div>
-            <p>Current Bid</p>
-            <div class="bid-price">$6,300</div>
-          </div>
-          <div class="timer">02:14:22</div>
-        </div>
-
-        <button class="btn">Place Bid</button>
+        <p>92,000 miles • Clean Title • California</p>
+        <p class="watching">🔥 18 watching</p>
+        <h4>Current Bid: $6,300</h4>
+        <p class="timer">Ends in: 02:14:22</p>
+        <a href="vehicle.html" class="bid-btn">Place Bid</a>
       </div>
     </div>
 
-    <div class="car-card">
-      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
-      <div class="car-info">
+    <div class="vehicle-card">
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70" alt="Honda Accord">
+      <div class="vehicle-info">
         <h3>2018 Honda Accord</h3>
-        <p class="details">110,000 miles • Clean Title • Orange County</p>
-        <p class="watching">🔥 25 people watching</p>
-
-        <div class="bid-row">
-          <div>
-            <p>Current Bid</p>
-            <div class="bid-price">$9,850</div>
-          </div>
-          <div class="timer">05:41:10</div>
-        </div>
-
-        <button class="btn">Place Bid</button>
+        <p>110,000 miles • Clean Title • Orange County</p>
+        <p class="watching">🔥 25 watching</p>
+        <h4>Current Bid: $9,850</h4>
+        <p class="timer">Ends in: 05:41:10</p>
+        <a href="vehicle.html" class="bid-btn">Place Bid</a>
       </div>
     </div>
 
-    <div class="car-card">
-      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7">
-      <div class="car-info">
+    <div class="vehicle-card">
+      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7" alt="Toyota Camry">
+      <div class="vehicle-info">
         <h3>2017 Toyota Camry</h3>
-        <p class="details">98,000 miles • Clean Title • Los Angeles</p>
-        <p class="watching">🔥 31 people watching</p>
-
-        <div class="bid-row">
-          <div>
-            <p>Current Bid</p>
-            <div class="bid-price">$8,200</div>
-          </div>
-          <div class="timer">01:58:44</div>
-        </div>
-
-        <button class="btn">Place Bid</button>
+        <p>98,000 miles • Clean Title • Los Angeles</p>
+        <p class="watching">🔥 31 watching</p>
+        <h4>Current Bid: $8,200</h4>
+        <p class="timer">Ends in: 01:58:44</p>
+        <a href="vehicle.html" class="bid-btn">Place Bid</a>
       </div>
     </div>
 
   </div>
 </section>
 
-<section class="how">
-  <h2 class="section-title">How It Works</h2>
+<section class="how-it-works">
+  <h2>How It Works</h2>
 
   <div class="steps">
     <div class="step">
       <h3>1. Browse</h3>
-      <p>Search auction vehicles by make, model, title, price, or location.</p>
+      <p>Search vehicles by make, model, title type, location, or auction status.</p>
     </div>
 
     <div class="step">
       <h3>2. Bid</h3>
-      <p>Place your bid online and watch the auction countdown.</p>
+      <p>Place your bid online and watch the countdown in real time.</p>
     </div>
 
     <div class="step">
       <h3>3. Win</h3>
-      <p>If you win, our team contacts you with payment instructions.</p>
+      <p>If you win the auction, our team will contact you with the next steps.</p>
     </div>
 
     <div class="step">
       <h3>4. Drive</h3>
-      <p>Pick up locally or arrange vehicle shipping.</p>
+      <p>Pick up locally or arrange shipping to your city.</p>
     </div>
   </div>
 </section>
 
 <section class="why">
-  <h2 class="section-title">Why Choose <span>Let's Drive Auction?</span></h2>
+  <h2>Why Choose Let's Drive Auction?</h2>
 
-  <div class="why-boxes">
-    <div class="why-box">✅ Dealer Auction Pricing</div>
-    <div class="why-box">✅ Transparent Vehicle Details</div>
-    <div class="why-box">✅ Financing Available</div>
-    <div class="why-box">✅ Shipping Support</div>
-    <div class="why-box">✅ Clean & Salvage Options</div>
-    <div class="why-box">✅ Easy Online Bidding</div>
+  <div class="why-grid">
+    <div>✅ Dealer Auction Pricing</div>
+    <div>✅ Transparent Vehicle Details</div>
+    <div>✅ Financing Available</div>
+    <div>✅ Shipping Support</div>
+    <div>✅ Clean & Salvage Options</div>
+    <div>✅ Simple Online Bidding</div>
   </div>
 </section>
 
@@ -464,32 +139,5 @@
   <p>© 2026 Let's Drive Auction. All rights reserved.</p>
 </footer>
 
-<script>
-  const categoryButtons = document.querySelectorAll(".category");
-  const carCards = document.querySelectorAll(".car-card");
-
-  categoryButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      const category = button.innerText.toLowerCase();
-
-      carCards.forEach(card => {
-        const text = card.innerText.toLowerCase();
-
-        if (
-          category === "ending today" ||
-          text.includes(category) ||
-          text.includes(category.replace("under $10k", ""))
-        ) {
-          card.style.display = "block";
-        } else if (category === "under $10k" && text.includes("$")) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
-      });
-    });
-  });
-</script>
-  
 </body>
 </html>
