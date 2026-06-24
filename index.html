@@ -1,89 +1,467 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>AU Auto</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Let's Drive Auction</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f5f5;
+      color: #111;
+    }
+
+    header {
+      background: white;
+      height: 80px;
+      padding: 0 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #111;
+    }
+
+    .logo span {
+      color: #e11d48;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
+    }
+
+    .btn {
+      background: #e11d48;
+      color: white;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+      url("https://images.unsplash.com/photo-1503736334956-4c8f8e92946d") center/cover;
+      height: 520px;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 0 8%;
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 21px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn-outline {
+      background: white;
+      color: #111;
+    }
+
+    .search-box {
+      background: white;
+      width: 84%;
+      margin: -45px auto 60px;
+      padding: 25px;
+      border-radius: 14px;
+      display: flex;
+      gap: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.18);
+      position: relative;
+    }
+
+    .search-box input,
+    .search-box select {
+      flex: 1;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 35px;
+    }
+
+    .section-title span {
+      color: #e11d48;
+    }
+
+    .categories {
+      padding: 20px 8% 60px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .category {
+      background: white;
+      padding: 18px 28px;
+      border-radius: 50px;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0,0,0,.08);
+    }
+
+    .auction-section {
+      padding: 20px 8% 70px;
+    }
+
+    .cars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .car-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 25px rgba(0,0,0,.1);
+    }
+
+    .car-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+    }
+
+    .car-info {
+      padding: 22px;
+    }
+
+    .car-info h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .details {
+      color: #555;
+      margin-bottom: 18px;
+    }
+
+    .bid-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .bid-price {
+      color: #e11d48;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .timer {
+      background: #111;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .watching {
+      color: #e11d48;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .car-card .btn {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .how {
+      background: #111;
+      color: white;
+      padding: 70px 8%;
+      text-align: center;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+      margin-top: 35px;
+    }
+
+    .step {
+      background: #1f1f1f;
+      padding: 30px;
+      border-radius: 14px;
+    }
+
+    .step h3 {
+      color: #e11d48;
+      margin-bottom: 12px;
+    }
+
+    .why {
+      padding: 70px 8%;
+      text-align: center;
+    }
+
+    .why-boxes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-top: 35px;
+    }
+
+    .why-box {
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.08);
+      font-weight: bold;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      padding: 45px 8%;
+      text-align: center;
+    }
+
+    footer h2 {
+      color: #e11d48;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 900px) {
+      nav a {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      .cars,
+      .steps,
+      .why-boxes {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
 <header>
-  <div class="logo">AU Auto</div>
+  <div class="logo">Let's Drive <span>Auction</span></div>
+
   <nav>
-    <a href="#">Inventory</a>
-    <a href="#">Financing</a>
-    <a href="#">Trade-In</a>
+    <a href="#">Home</a>
+    <a href="#">Auctions</a>
+    <a href="#">Sell Your Car</a>
+    <a href="#">How It Works</a>
     <a href="#">Contact</a>
-    <button>Apply Now</button>
+    <button class="btn">Sign Up</button>
   </nav>
 </header>
 
 <section class="hero">
-  <div>
-    <h1>Find Your Next Car Today</h1>
-    <p>Quality used cars, easy financing, and trusted service in Orange County.</p>
-    <button>View Inventory</button>
+  <div class="hero-content">
+    <h1>Buy Smarter. Drive Better.</h1>
+    <p>
+      Bid on quality auction vehicles with transparent pricing, real photos,
+      vehicle details, and easy online bidding.
+    </p>
+
+    <div class="hero-buttons">
+      <button class="btn">Browse Auctions</button>
+      <button class="btn btn-outline">Sell Your Car</button>
+    </div>
   </div>
 </section>
 
-<section class="search">
-  <input placeholder="Search by make or model">
+<section class="search-box">
+  <input type="text" placeholder="Search make, model, or keyword">
   <select>
-    <option>Max Price</option>
-    <option>$10,000</option>
-    <option>$15,000</option>
-    <option>$20,000</option>
-  </select>
-  <select>
-    <option>Body Type</option>
+    <option>All Vehicles</option>
     <option>Sedan</option>
     <option>SUV</option>
     <option>Truck</option>
+    <option>Luxury</option>
   </select>
-  <button>Search</button>
+  <select>
+    <option>Ending Soon</option>
+    <option>Ending Today</option>
+    <option>New Arrivals</option>
+    <option>No Reserve</option>
+  </select>
+  <button class="btn">Search</button>
 </section>
 
-<h2>Featured Vehicles</h2>
+<h2 class="section-title">Shop by <span>Category</span></h2>
 
-<section class="cars">
-  <div class="car-card">
-    <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2" />
-    <h3>2020 Chevrolet Sonic</h3>
-    <p>92,000 miles • Clean Title</p>
-    <strong>$8,995</strong>
-    <button>View Details</button>
+<section class="categories">
+  <div class="category">Ending Today</div>
+  <div class="category">No Reserve</div>
+  <div class="category">Clean Title</div>
+  <div class="category">Salvage</div>
+  <div class="category">Luxury</div>
+  <div class="category">SUV</div>
+  <div class="category">Truck</div>
+  <div class="category">Under $10k</div>
+</section>
+
+<section class="auction-section">
+  <h2 class="section-title">Featured <span>Auctions</span></h2>
+
+  <div class="cars">
+
+    <div class="car-card">
+      <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2">
+      <div class="car-info">
+        <h3>2020 Chevrolet Sonic</h3>
+        <p class="details">92,000 miles • Clean Title • California</p>
+        <p class="watching">🔥 18 people watching</p>
+
+        <div class="bid-row">
+          <div>
+            <p>Current Bid</p>
+            <div class="bid-price">$6,300</div>
+          </div>
+          <div class="timer">02:14:22</div>
+        </div>
+
+        <button class="btn">Place Bid</button>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
+      <div class="car-info">
+        <h3>2018 Honda Accord</h3>
+        <p class="details">110,000 miles • Clean Title • Orange County</p>
+        <p class="watching">🔥 25 people watching</p>
+
+        <div class="bid-row">
+          <div>
+            <p>Current Bid</p>
+            <div class="bid-price">$9,850</div>
+          </div>
+          <div class="timer">05:41:10</div>
+        </div>
+
+        <button class="btn">Place Bid</button>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7">
+      <div class="car-info">
+        <h3>2017 Toyota Camry</h3>
+        <p class="details">98,000 miles • Clean Title • Los Angeles</p>
+        <p class="watching">🔥 31 people watching</p>
+
+        <div class="bid-row">
+          <div>
+            <p>Current Bid</p>
+            <div class="bid-price">$8,200</div>
+          </div>
+          <div class="timer">01:58:44</div>
+        </div>
+
+        <button class="btn">Place Bid</button>
+      </div>
+    </div>
+
   </div>
+</section>
 
-  <div class="car-card">
-    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70" />
-    <h3>2018 Honda Accord</h3>
-    <p>110,000 miles • Clean Title</p>
-    <strong>$13,995</strong>
-    <button>View Details</button>
-  </div>
+<section class="how">
+  <h2 class="section-title">How It Works</h2>
 
-  <div class="car-card">
-    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7" />
-    <h3>2017 Toyota Camry</h3>
-    <p>98,000 miles • Clean Title</p>
-    <strong>$12,995</strong>
-    <button>View Details</button>
+  <div class="steps">
+    <div class="step">
+      <h3>1. Browse</h3>
+      <p>Search auction vehicles by make, model, title, price, or location.</p>
+    </div>
+
+    <div class="step">
+      <h3>2. Bid</h3>
+      <p>Place your bid online and watch the auction countdown.</p>
+    </div>
+
+    <div class="step">
+      <h3>3. Win</h3>
+      <p>If you win, our team contacts you with payment instructions.</p>
+    </div>
+
+    <div class="step">
+      <h3>4. Drive</h3>
+      <p>Pick up locally or arrange vehicle shipping.</p>
+    </div>
   </div>
 </section>
 
 <section class="why">
-  <h2>Why Buy From Us?</h2>
+  <h2 class="section-title">Why Choose <span>Let's Drive Auction?</span></h2>
+
   <div class="why-boxes">
-    <div>✅ Affordable Prices</div>
-    <div>✅ Financing Available</div>
-    <div>✅ Trade-Ins Welcome</div>
-    <div>✅ Clean & Reliable Cars</div>
+    <div class="why-box">✅ Dealer Auction Pricing</div>
+    <div class="why-box">✅ Transparent Vehicle Details</div>
+    <div class="why-box">✅ Financing Available</div>
+    <div class="why-box">✅ Shipping Support</div>
+    <div class="why-box">✅ Clean & Salvage Options</div>
+    <div class="why-box">✅ Easy Online Bidding</div>
   </div>
 </section>
 
 <footer>
-  <h3>AU Auto</h3>
+  <h2>Let's Drive Auction</h2>
   <p>Orange County, CA</p>
   <p>Call/Text: (714) 000-0000</p>
+  <p>© 2026 Let's Drive Auction. All rights reserved.</p>
 </footer>
 
 </body>
