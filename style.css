@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  height: 80px;
+  padding: 0 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #d71920;
+}
+
+nav {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: #111;
+  font-weight: bold;
+}
+
+button {
+  background: #d71920;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.hero {
+  height: 450px;
+  background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+  url("https://images.unsplash.com/photo-1503736334956-4c8f8e92946d") center/cover;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 10%;
+}
+
+.hero h1 {
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+.search {
+  margin: -40px auto 50px;
+  background: white;
+  width: 80%;
+  padding: 25px;
+  display: flex;
+  gap: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+  border-radius: 10px;
+  position: relative;
+}
+
+.search input,
+.search select {
+  flex: 1;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+h2 {
+  text-align: center;
+  margin: 40px 0 25px;
+  font-size: 34px;
+}
+
+.cars {
+  display: flex;
+  gap: 25px;
+  padding: 0 10% 60px;
+}
+
+.car-card {
+  flex: 1;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,.08);
+  background: white;
+}
+
+.car-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.car-card h3,
+.car-card p,
+.car-card strong {
+  display: block;
+  padding: 10px 20px;
+}
+
+.car-card strong {
+  font-size: 22px;
+  color: #d71920;
+}
+
+.car-card button {
+  margin: 15px 20px 25px;
+}
+
+.why {
+  background: #f7f7f7;
+  padding: 50px 10%;
+  text-align: center;
+}
+
+.why-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.why-boxes div {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  min-width: 220px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+}
+
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 35px;
+}
+
+footer h3 {
+  color: #d71920;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  nav a {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .search,
+  .cars {
+    flex-direction: column;
+  }
+}
