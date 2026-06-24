@@ -464,5 +464,32 @@
   <p>© 2026 Let's Drive Auction. All rights reserved.</p>
 </footer>
 
+<script>
+  const categoryButtons = document.querySelectorAll(".category");
+  const carCards = document.querySelectorAll(".car-card");
+
+  categoryButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const category = button.innerText.toLowerCase();
+
+      carCards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+
+        if (
+          category === "ending today" ||
+          text.includes(category) ||
+          text.includes(category.replace("under $10k", ""))
+        ) {
+          card.style.display = "block";
+        } else if (category === "under $10k" && text.includes("$")) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+</script>
+  
 </body>
 </html>
