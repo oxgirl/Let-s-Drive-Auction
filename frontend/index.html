@@ -14,7 +14,6 @@
 :root {
     --primary-black: #000000;
     --secondary-black: #1a1a1a;
-    --tertiary-black: #2d2d2d;
     --light-gray: #f5f5f5;
     --medium-gray: #e8e8e8;
     --dark-gray: #666666;
@@ -22,13 +21,15 @@
     --white: #ffffff;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
     color: var(--primary-black);
     line-height: 1.6;
     background-color: var(--white);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -134,7 +135,6 @@ body {
 
 .btn-primary:hover {
     opacity: 0.8;
-    transform: none;
 }
 
 .btn-secondary {
@@ -595,7 +595,6 @@ body {
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
@@ -612,16 +611,14 @@ body {
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h2>Bid on Your Dream Car Without a License</h2>
             <p>Our licensed brokers handle the paperwork while you enjoy the bidding experience</p>
-            <button class="btn btn-primary" onclick="document.getElementById('auctions').scrollIntoView({behavior: 'smooth'})">Browse Auctions</button>
+            <button class="btn btn-primary" onclick="scrollToAuctions()">Browse Auctions</button>
         </div>
     </section>
 
-    <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
             <h2>Why Choose Us</h2>
@@ -661,7 +658,6 @@ body {
         </div>
     </section>
 
-    <!-- How It Works Section -->
     <section id="how-it-works" class="how-it-works">
         <div class="container">
             <h2>How It Works</h2>
@@ -690,14 +686,12 @@ body {
         </div>
     </section>
 
-    <!-- Auctions Section -->
     <section id="auctions" class="auctions">
         <div class="container">
             <h2>Active Auctions</h2>
-            <div class="auctions-grid" id="auctions-grid">
-                <!-- Auction items -->
+            <div class="auctions-grid">
                 <div class="auction-card">
-                    <img src="https://images.unsplash.com/photo-1590362891990-f776e74a5a38?w=300&h=200&fit=crop" alt="2022 Honda Civic">
+                    <img src="https://images.unsplash.com/photo-1590362891990-f776e74a5a38?w=400&h=250&fit=crop" alt="2022 Honda Civic">
                     <div class="auction-info">
                         <h3>2022 Honda Civic</h3>
                         <p class="mileage">35,000 miles</p>
@@ -710,7 +704,7 @@ body {
                 </div>
 
                 <div class="auction-card">
-                    <img src="https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=300&h=200&fit=crop" alt="2021 Toyota Camry">
+                    <img src="https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=400&h=250&fit=crop" alt="2021 Toyota Camry">
                     <div class="auction-info">
                         <h3>2021 Toyota Camry</h3>
                         <p class="mileage">28,000 miles</p>
@@ -723,7 +717,7 @@ body {
                 </div>
 
                 <div class="auction-card">
-                    <img src="https://images.unsplash.com/photo-1533473359331-35a3460efb8f?w=300&h=200&fit=crop" alt="2020 Ford F-150">
+                    <img src="https://images.unsplash.com/photo-1533473359331-35a3460efb8f?w=400&h=250&fit=crop" alt="2020 Ford F-150">
                     <div class="auction-info">
                         <h3>2020 Ford F-150</h3>
                         <p class="mileage">42,000 miles</p>
@@ -736,7 +730,7 @@ body {
                 </div>
 
                 <div class="auction-card">
-                    <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?w=300&h=200&fit=crop" alt="2023 Tesla Model 3">
+                    <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?w=400&h=250&fit=crop" alt="2023 Tesla Model 3">
                     <div class="auction-info">
                         <h3>2023 Tesla Model 3</h3>
                         <p class="mileage">12,000 miles</p>
@@ -749,7 +743,7 @@ body {
                 </div>
 
                 <div class="auction-card">
-                    <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?w=300&h=200&fit=crop" alt="2019 BMW X5">
+                    <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?w=400&h=250&fit=crop" alt="2019 BMW X5">
                     <div class="auction-info">
                         <h3>2019 BMW X5</h3>
                         <p class="mileage">58,000 miles</p>
@@ -762,7 +756,7 @@ body {
                 </div>
 
                 <div class="auction-card">
-                    <img src="https://images.unsplash.com/photo-1609708536965-05589210993d?w=300&h=200&fit=crop" alt="2021 Chevrolet Malibu">
+                    <img src="https://images.unsplash.com/photo-1609708536965-05589210993d?w=400&h=250&fit=crop" alt="2021 Chevrolet Malibu">
                     <div class="auction-info">
                         <h3>2021 Chevrolet Malibu</h3>
                         <p class="mileage">31,000 miles</p>
@@ -777,7 +771,6 @@ body {
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
             <h2>About LET'S DRIVE AUCTION</h2>
@@ -786,7 +779,6 @@ body {
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <h2>Get In Touch</h2>
@@ -810,7 +802,6 @@ body {
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 LET'S DRIVE AUCTION. All rights reserved.</p>
@@ -819,6 +810,10 @@ body {
     </footer>
 
     <script>
+        function scrollToAuctions() {
+            document.getElementById('auctions').scrollIntoView({ behavior: 'smooth' });
+        }
+
         function handleContactSubmit(event) {
             event.preventDefault();
             alert('Thank you for your message! We will get back to you soon.');
