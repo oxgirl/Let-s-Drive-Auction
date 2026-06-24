@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Let's Drive Auction - Car Auction Broker</title>
+    <title>Let's Drive - Car Auction & Auto Inventory</title>
     <style>
 * {
     margin: 0;
@@ -60,7 +60,6 @@ body {
     font-size: 1.3rem;
     font-weight: 500;
     letter-spacing: -0.5px;
-    text-transform: uppercase;
 }
 
 .nav-menu {
@@ -386,10 +385,82 @@ body {
     font-weight: 400;
 }
 
+/* Inventory Section */
+.inventory {
+    padding: 6rem 2rem;
+    background-color: var(--light-dark-gray);
+}
+
+.inventory h2 {
+    text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.inventory-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--dark-gray);
+    margin-bottom: 5rem;
+    font-weight: 400;
+}
+
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.inventory-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.inventory-card:hover {
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+    transform: translateY(-10px);
+}
+
+.inventory-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.inventory-card:hover img {
+    filter: grayscale(0%);
+}
+
+.inventory-info {
+    padding: 2.5rem;
+}
+
+.inventory-info h3 {
+    margin-bottom: 0.8rem;
+    color: var(--primary-black);
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.price-tag {
+    font-weight: 600;
+    color: var(--primary-black);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
 /* About Section */
 .about {
     padding: 6rem 2rem;
-    background-color: var(--light-dark-gray);
+    background-color: var(--white);
     text-align: center;
 }
 
@@ -415,7 +486,7 @@ body {
 /* Contact Section */
 .contact {
     padding: 6rem 2rem;
-    background-color: var(--white);
+    background-color: var(--light-dark-gray);
 }
 
 .contact h2 {
@@ -494,8 +565,8 @@ body {
 
 /* Footer */
 .footer {
-    background-color: var(--light-dark-gray);
-    color: var(--primary-black);
+    background-color: var(--primary-black);
+    color: var(--white);
     padding: 4rem 2rem;
     text-align: center;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
@@ -504,18 +575,18 @@ body {
 .footer p {
     margin-bottom: 1rem;
     font-weight: 400;
-    color: var(--dark-gray);
+    color: var(--medium-gray);
 }
 
 .footer a {
-    color: var(--primary-black);
+    color: var(--white);
     text-decoration: none;
     font-weight: 600;
     transition: opacity 0.3s ease;
 }
 
 .footer a:hover {
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
 /* Responsive Design */
@@ -541,6 +612,7 @@ body {
     .features h2,
     .how-it-works h2,
     .auctions h2,
+    .inventory h2,
     .about h2,
     .contact h2 {
         font-size: 2.5rem;
@@ -556,7 +628,8 @@ body {
         gap: 3rem;
     }
 
-    .auctions-grid {
+    .auctions-grid,
+    .inventory-grid {
         grid-template-columns: 1fr;
     }
 }
@@ -582,7 +655,7 @@ body {
         font-size: 2rem;
     }
 
-    .features, .how-it-works, .auctions, .about, .contact {
+    .features, .how-it-works, .auctions, .inventory, .about, .contact {
         padding: 3rem 1rem;
     }
 
@@ -598,11 +671,12 @@ body {
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <h1>LETSDRIVEAUCTION</h1>
+                <h1>Let's Drive</h1>
             </div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#auctions">Auctions</a></li>
+                <li><a href="#inventory">Inventory</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><button class="btn-login">Login</button></li>
@@ -613,46 +687,46 @@ body {
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h2>Bid on Your Dream Car Without a License</h2>
-            <p>Our licensed brokers handle the paperwork while you enjoy the bidding experience</p>
-            <button class="btn btn-primary" onclick="scrollToAuctions()">Browse Auctions</button>
+            <h2>Buy, Sell & Bid on Quality Vehicles</h2>
+            <p>Browse our auction listings and inventory. Licensed brokers handle the paperwork while you find your perfect car.</p>
+            <button class="btn btn-primary" onclick="scrollToAuctions()">Browse Now</button>
         </div>
     </section>
 
     <section id="features" class="features">
         <div class="container">
-            <h2>Why Choose Us</h2>
-            <p class="features-subtitle">Everything you need for a seamless bidding experience</p>
+            <h2>Why Choose Let's Drive</h2>
+            <p class="features-subtitle">Your trusted partner for buying, selling, and bidding on quality vehicles</p>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">📋</div>
-                    <h3>Easy Registration</h3>
-                    <p>Sign up in minutes with basic information. No hassle, no delays.</p>
+                    <div class="feature-icon">🚗</div>
+                    <h3>Wide Selection</h3>
+                    <p>Browse hundreds of quality vehicles from our inventory and live auctions.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🤝</div>
                     <h3>Licensed Brokers</h3>
-                    <p>Our professional brokers handle all legal paperwork and documentation on your behalf.</p>
+                    <p>Professional brokers handle all paperwork and documentation for you.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💰</div>
-                    <h3>Transparent Pricing</h3>
-                    <p>No hidden fees. You know exactly what you're paying before you bid.</p>
+                    <h3>Competitive Pricing</h3>
+                    <p>Get the best deals with transparent pricing and no hidden fees.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
-                    <h3>Real-Time Bidding</h3>
-                    <p>Live auction experience with real-time updates and instant notifications.</p>
+                    <h3>Live Auctions</h3>
+                    <p>Real-time bidding with instant updates and notifications.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔒</div>
-                    <h3>Secure Payments</h3>
-                    <p>Bank-level security for all transactions and personal information.</p>
+                    <h3>Secure Transactions</h3>
+                    <p>Bank-level security for all payments and personal information.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📱</div>
-                    <h3>Mobile Friendly</h3>
-                    <p>Bid on the go with our responsive mobile app and website.</p>
+                    <h3>Easy Access</h3>
+                    <p>Browse and bid from anywhere on any device.</p>
                 </div>
             </div>
         </div>
@@ -665,22 +739,22 @@ body {
                 <div class="step">
                     <div class="step-number">1</div>
                     <h3>Create Account</h3>
-                    <p>Sign up with your email and basic information</p>
+                    <p>Sign up with your details</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
                     <h3>Browse Vehicles</h3>
-                    <p>Explore our collection of available vehicles</p>
+                    <p>Explore auctions and inventory</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Place Bids</h3>
-                    <p>Bid on auctions in real-time with our brokers</p>
+                    <h3>Place Bids or Buy</h3>
+                    <p>Bid in auctions or purchase directly</p>
                 </div>
                 <div class="step">
                     <div class="step-number">4</div>
-                    <h3>Win & Own</h3>
-                    <p>We handle the paperwork and deliver your new car</p>
+                    <h3>Complete Purchase</h3>
+                    <p>We handle paperwork and delivery</p>
                 </div>
             </div>
         </div>
@@ -688,7 +762,7 @@ body {
 
     <section id="auctions" class="auctions">
         <div class="container">
-            <h2>Active Auctions</h2>
+            <h2>Live Auctions</h2>
             <div class="auctions-grid">
                 <div class="auction-card">
                     <img src="https://images.unsplash.com/photo-1590362891990-f776e74a5a38?w=400&h=250&fit=crop" alt="2022 Honda Civic">
@@ -771,11 +845,79 @@ body {
         </div>
     </section>
 
+    <section id="inventory" class="inventory">
+        <div class="container">
+            <h2>Our Inventory</h2>
+            <p class="inventory-subtitle">Let's Drive Auto - Buy Quality Vehicles Direct</p>
+            <div class="inventory-grid">
+                <div class="inventory-card">
+                    <img src="https://images.unsplash.com/photo-1494976866556-6812c6a1a3e0?w=400&h=250&fit=crop" alt="2023 Hyundai Elantra">
+                    <div class="inventory-info">
+                        <h3>2023 Hyundai Elantra</h3>
+                        <p class="mileage">8,500 miles</p>
+                        <p class="price-tag">$18,999</p>
+                        <button class="btn btn-secondary" onclick="alert('Contact us for more details!')">View Details</button>
+                    </div>
+                </div>
+
+                <div class="inventory-card">
+                    <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=400&h=250&fit=crop" alt="2022 Volkswagen Jetta">
+                    <div class="inventory-info">
+                        <h3>2022 Volkswagen Jetta</h3>
+                        <p class="mileage">24,300 miles</p>
+                        <p class="price-tag">$19,499</p>
+                        <button class="btn btn-secondary" onclick="alert('Contact us for more details!')">View Details</button>
+                    </div>
+                </div>
+
+                <div class="inventory-card">
+                    <img src="https://images.unsplash.com/photo-1527524330606-7bfa134666b4?w=400&h=250&fit=crop" alt="2021 Mazda3">
+                    <div class="inventory-info">
+                        <h3>2021 Mazda3</h3>
+                        <p class="mileage">32,100 miles</p>
+                        <p class="price-tag">$17,799</p>
+                        <button class="btn btn-secondary" onclick="alert('Contact us for more details!')">View Details</button>
+                    </div>
+                </div>
+
+                <div class="inventory-card">
+                    <img src="https://images.unsplash.com/photo-1552500494-cfb3097a4d71?w=400&h=250&fit=crop" alt="2023 Subaru Outback">
+                    <div class="inventory-info">
+                        <h3>2023 Subaru Outback</h3>
+                        <p class="mileage">5,200 miles</p>
+                        <p class="price-tag">$27,499</p>
+                        <button class="btn btn-secondary" onclick="alert('Contact us for more details!')">View Details</button>
+                    </div>
+                </div>
+
+                <div class="inventory-card">
+                    <img src="https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=400&h=250&fit=crop" alt="2020 Honda Accord">
+                    <div class="inventory-info">
+                        <h3>2020 Honda Accord</h3>
+                        <p class="mileage">47,800 miles</p>
+                        <p class="price-tag">$16,299</p>
+                        <button class="btn btn-secondary" onclick="alert('Contact us for more details!')">View Details</button>
+                    </div>
+                </div>
+
+                <div class="inventory-card">
+                    <img src="https://images.unsplash.com/photo-1500595046891-93c0b3d5ecc8?w=400&h=250&fit=crop" alt="2022 Kia Forte">
+                    <div class="inventory-info">
+                        <h3>2022 Kia Forte</h3>
+                        <p class="mileage">19,450 miles</p>
+                        <p class="price-tag">$18,799</p>
+                        <button class="btn btn-secondary" onclick="alert('Contact us for more details!')">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="about" class="about">
         <div class="container">
-            <h2>About LET'S DRIVE AUCTION</h2>
-            <p>LET'S DRIVE AUCTION is a premier car auction platform that bridges the gap between customers and licensed brokers. We specialize in helping individuals without a current driver's license participate in vehicle auctions seamlessly and legally.</p>
-            <p>Our team of licensed brokers handles all the legal requirements and documentation, allowing you to focus on finding your perfect vehicle at the best price.</p>
+            <h2>About Let's Drive</h2>
+            <p>Let's Drive is your one-stop destination for buying, selling, and bidding on quality vehicles. We operate both a live auction platform and a retail inventory through Let's Drive Auto.</p>
+            <p>Whether you're looking to bid on auction vehicles or browse our pre-owned inventory, our licensed brokers and professional team handle all the paperwork, making the process seamless and transparent.</p>
         </div>
     </section>
 
@@ -788,14 +930,17 @@ body {
                     <p><strong>Phone:</strong></p>
                     <p><a href="tel:714-987-2919">714-987-2919</a></p>
                     <p style="margin-top: 2rem;"><strong>Email:</strong></p>
-                    <p>support@letsdriveauction.com</p>
+                    <p>info@letsdrive.com</p>
                     <p style="margin-top: 2rem;"><strong>Hours:</strong></p>
-                    <p>Monday - Friday<br>9 AM - 6 PM PST</p>
+                    <p>Monday - Sunday<br>9 AM - 6 PM PST</p>
+                    <p style="margin-top: 2rem;"><strong>Let's Drive Auto</strong></p>
+                    <p>Buy & Sell Used Inventory</p>
                 </div>
                 <form class="contact-form" onsubmit="handleContactSubmit(event)">
                     <input type="text" placeholder="Your Name" required>
                     <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <input type="text" placeholder="Phone Number" required>
+                    <textarea placeholder="Your Message" rows="4" required></textarea>
                     <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
             </div>
@@ -804,7 +949,8 @@ body {
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 LET'S DRIVE AUCTION. All rights reserved.</p>
+            <p>&copy; 2024 Let's Drive. All rights reserved.</p>
+            <p>Auctions & Inventory | Licensed Auto Brokers</p>
             <p>Phone: <a href="tel:714-987-2919">714-987-2919</a></p>
         </div>
     </footer>
